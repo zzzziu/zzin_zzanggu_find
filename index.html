@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+	<title>진짜 짱구를 찾아랏 빠밤!</title>
+		<style type="text/css">
+			html{cursor: url(face1.png), auto}
+			body{font-family: 'Jua', sans-serif; margin: 0;}
+			section{ height: 640px; position: relative; padding: 0;}
+			#back{background: url(./back.jpg); background-size: cover; background-attachment: fixed; z-index: 1;}
+			#back2{background: url(./back2.jpg); background-size: cover; background-attachment: fixed; z-index: 1; opacity: 0;}
+			#start{height: 550px; align-content: center; position: absolute; left: 560px; top: 50px;
+				opacity: 0.5; }
+			#start:hover {height: 550px; opacity: 1;}
+			#Bigboy{position: absolute; left: 70px; top: 60px;
+				z-index: 90; height: 500px; width: auto; display: none; }
+			#Gametable{height: 570px; width: 720px; position: absolute; left: 450px; top: 30px; background: url(./box.jpg); display: none;}
+			#box{position: absolute; left: 70px; height: 650px;}
+			.float{float: left; clear: both;}
+			.center{text-align: center; }
+			.Pis{position: absolute; width: 35px; right: 50%; bottom: 50%; animation: ro 1s linear alternate infinite; z-index: 100; display: none;}
+			.drag{display: none;}
+
+
+			@keyframes ro { 
+				to {transform: translateY(10%);}
+			}
+
+			
+		
+			
+
+		</style>
+</head>
+<body class="center" id="back">
+	
+	<header>
+			<h1>🤩 진짜 짱구를 찾아랏! 🤩</h1>
+			<p>미니 짱구들을 드래그하면서 파묻힌 짱구도 꼭 확인하면서 찾기!</p>
+	</header>
+
+	<section>
+		<div style="width: 600px; margin-right: 0px; position: absolute;">
+		<img src="big-real.png" id="start">
+		<audio src="song.mp3" id="song" loop></audio>
+		</div>
+		
+
+		<div id="box" class="center">	
+		<div>
+			<img src="real.png" id="Bigboy" >
+		</div>
+			<div id="Gametable">
+				<img src="zzanggu-01.png" class="Pis drag" id="zzin">
+				<img src="zzanggu-02.png" class="Pis drag" id="puple">
+				<img src="zzanggu-03.png" class="Pis drag" id="yellow">
+				<img src="zzanggu-04.png" class="Pis drag" id="spuple">
+				<img src="zzanggu-05.png" class="Pis drag" id="esmall">
+				<img src="zzanggu-06.png" class="Pis drag" id="blue">
+				<img src="zzanggu-07.png" class="Pis drag" id="green">
+				<img src="zzanggu-08.png" class="Pis drag" id="rabbit">
+				
+				<audio id="yee">
+	  			<source src="yeah.mp3" type="audio/mpeg">
+				</audio>
+				<audio id="no">
+	 			<source src="wrong.mp3" type="audio/mpeg">
+				</audio>
+			</div>
+			</div>	
+			
+		</div>
+		
+	</section>
+
+	<div id="back2"></div>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+
+
+		var startstate = "off";
+		start.onclick = function () {
+			start.style.opacity = "0";
+			Bigboy.style.display ="block";
+			Gametable.style.display = "block";
+			var a = document.getElementsByClassName("Pis");
+			for(var i=0; i<a.length; i++){
+				a[i].style.display = "block";
+			}
+			
+		(function(){
+		var d = false;
+		var target,dx,dy;
+		var t = document.getElementsByClassName("drag");
+		for(var i=0; i<t.length; i++){
+			t[i].style.display = "block";
+			t[i].style.position = "absolute";
+			t[i].style.cursor = "url(face1.png),auto";
+			t[i].ondragstart = function(e){e.preventDefault();};
+			t[i].onmousedown = function(e){ d = true; dx = e.offsetX; dy = e.offsetY; target = e.target;}
+			t[i].onmouseup = function(){ d = false;}
+			window.onmousemove = function(e){ 
+				if(d){ target.style.left = (e.clientX - dx) + "px";
+					target.style.top = (e.clientY - dy) + "px";}
+			}
+		}
+	})();
+			
+			if(startstate == "off"){
+				song.play(); startstate = "on";
+				
+			}
+		}
+		
+
+		no.volume = 0.3;
+			for(var i = 0; i<15; i++){
+			var a = puple.cloneNode(true);
+			a.id = i;
+			a.style.left = Math.random()*650 + 535 +"px";
+			a.style.top = Math.random()*490 + 160 +"px";
+			a.style.animationDelay = i + "s";
+				a.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(a);
+		}
+
+		for(var i = 0; i<15; i++){
+			var b = yellow.cloneNode(true);
+			b.id = i;
+			b.style.left = Math.random()*650 + 535 + "px";
+			b.style.top = Math.random()*490 + 160 + "px";
+			b.style.animationDelay = i + "s";
+				b.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(b);
+		}
+
+		for(var i = 0; i<25; i++){
+			var c = spuple.cloneNode(true);
+			c.id = i;
+			c.style.left = Math.random()*650 + 535 + "px";
+			c.style.top = Math.random()*490 + 160 + "px";
+			c.style.animationDelay = i + "s";
+				c.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(c);
+		}
+
+		for(var i = 0; i<25; i++){
+			var d = esmall.cloneNode(true);
+			d.id = i;
+			d.style.left = Math.random()*650 + 535 + "px";
+			d.style.top = Math.random()*490 + 160 + "px";
+			d.style.animationDelay = i + "s";
+				d.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(d);
+		}
+
+			for(var i = 0; i<12; i++){
+			var e = blue.cloneNode(true);
+			e.id = i;
+			e.style.left = Math.random()*650 + 535 + "px";
+			e.style.top = Math.random()*490 + 160 + "px";
+			e.style.animationDelay = i + "s";
+				e.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(e);
+		}
+
+		for(var i = 0; i<12; i++){
+			var f = green.cloneNode(true);
+			f.id = i;
+			f.style.left = Math.random()*650 + 535 + "px";
+			f.style.top = Math.random()*490 + 160 + "px";
+			f.style.animationDelay = i + "s";
+				f.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(f)
+		}
+
+			for(var i = 0; i<15; i++){
+			var g = rabbit.cloneNode(true);
+			g.id = i;
+			g.style.left = Math.random()*650 + 535 + "px";
+			g.style.top = Math.random()*490 + 160 + "px";
+			g.style.animationDelay = i + "s";
+			g.onclick = function(){
+				no.play();
+				}
+			document.body.appendChild(g);
+		}
+
+			for(var i = 0; i<1; i++){
+				var hh = zzin.cloneNode(true);
+				hh.id = i;
+				hh.style.left = Math.random()*650 + 535 + "px";
+				hh.style.top = Math.random()*490 + 160 + "px";
+				hh.style.animationDelay = i + "s";
+				
+				document.body.appendChild(hh);
+			}
+
+		var  estate = "off";
+		hh.onclick = function(){
+
+			Bigboy.src = "new.png";
+			
+			if (estate == "off"){
+				yee.play();
+
+				
+			}else{back2.style.display = "";
+			}
+		}
+
+	</script>
+
+</body>
+</html>
